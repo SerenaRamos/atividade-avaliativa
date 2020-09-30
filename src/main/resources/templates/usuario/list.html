@@ -24,7 +24,7 @@
         <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" th:href="@{/}">Principal</a>
+                    <a class="nav-link " th:href="@{/}">Principal</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/projeto/list}">Projetos</a>
@@ -33,7 +33,7 @@
                     <a class="nav-link" th:href="@{/funcionario/list}">Funcionários</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/usuario/list}">Usuários</a>
+                    <a class="nav-link active" th:href="@{/usuario/list}">Usuários</a>
                 </li>
             </ul>
         </div>
@@ -41,7 +41,45 @@
 
 
     <!--CONTEÚDO-->
-    <div class="container container-principal">
+    <div class="container container-funcionarios">
+		<div class="bg-dark frm-titulo">
+            <h3>Usuários</h3>
+        </div>
+
+        <div class="btn-novo">
+            <button class="btn btn-outline-success"
+                th:href="@{/usuario/add}"
+                onclick="window.location.href='./add'">
+                <i class="fa fa-plus-circle"></i> Novo
+            </button>
+        </div>
+        
+		<div class="div-tabela">
+		
+	        <table class="table">
+	            <thead class="table-dark">  
+	                <tr>
+	                    <th>Código</th>
+	                    <th>Nome</th>
+                        <th>login</th>
+                        <th>senha</th>
+                        <th>cpf</th>
+	                </tr>
+	            </thead>
+	            <tbody>
+	                <tr th:each="usuario: ${usuarios}">
+	                    <td class="td-codigo" th:text="${usuario.id}"></td>
+	                    <td th:text="${usuario.nome}"></td>
+                        <td th:text="${usuario.login}"></td>
+                        <td th:text="${usuario.senha}"></td>
+                        <td th:text="${usuario.cpf}"></td>
+	                    <td class="td-btn"><a th:href="@{'/usuario/view/'+${usuario.id}}"><i class="fa fa-eye cl-fa"></i></a></i></td>
+	                    <td class="td-btn"><a th:href="@{'/usuario/edit/'+${usuario.id}}"><i class="fa fa-edit cl-fa"></i></a></i></td>
+	                    <td class="td-btn"><a th:href="@{'/usuario/delete/'+${usuario.id}}"><i class="fa fa-trash-alt cl-fa-delete"></i></a></i></td>
+	                </tr>
+	            </tbody>
+	        </table>
+        </div>
         
     </div>
 

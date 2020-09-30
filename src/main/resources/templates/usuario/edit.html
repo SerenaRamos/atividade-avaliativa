@@ -14,7 +14,7 @@
 <body>
     <!--MENU-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" th:href="@{/}">Gerenciamento de Projetos</a>
+        <a class="navbar-brand" th:href="@{/}">Gerenciamento de Usuários</a>
         <!--BOTÃO MENU-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu"
             aria-controls="navbarMenu" aria-expanded="false">
@@ -27,10 +27,13 @@
                     <a class="nav-link " th:href="@{/}">Principal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/projeto/list}">Projetos</a>
+                    <a class="nav-link " th:href="@{/projeto/list}">Projetos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" th:href="@{/funcionario/list}">Funcionários</a>
+                    <a class="nav-link " th:href="@{/funcionario/list}">Funcionários</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/usuario/list}">Usuários</a>
                 </li>
             </ul>
         </div>
@@ -38,47 +41,53 @@
 
 
     <!--CONTEÚDO-->
-    <div class="container container-funcionario">
-
+    <div class="container container-projeto">
+        
 		<div class="bg-dark frm-titulo">
-            <h3>Funcionário</h3>
+            <h3>Usuário</h3>
         </div>
 
-        <form th:object="${funcionario}"
-            th:action="@{/funcionario/delete}" method="POST">
-            <div class="form-group row">
-                <div class="col-sm-1"></div>
-                <div  class="col-sm-10 alert alert-danger" role="alert">
-                    Deseja realmente deletar o Funcionário?
-                </div>
-            </div>
+        <form th:object="${usuario}"
+            th:action="@{/usuario/save}" method="POST">
+
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Código</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="codigo" th:field="${funcionario.id}" readonly>
-                </div>
+                    <input type="text" class="form-control" id="id" th:field="${usuario.id}" readonly>
+                </div>    
             </div>
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Nome</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nome" th:field="${funcionario.nome}" required>
+                    <input type="text" class="form-control" id="nome" th:field="${usuario.nome}" required>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Cargo</label>
+                <label class="col-sm-2 col-form-label">Login</label>
                 <div class="col-sm-10">
-                    <select class="form-control" th:field="${funcionario.cargo}" required>
-                        <option value="Contabilidade">Contabilidade</option>
-                        <option value="Financeiro">Financeiro</option>
-                        <option value="Gerente">Gerente</option>
-                        <option value="TI">TI</option>
-                        <option value="Vendedor">Vendedor</option>
-                    </select>
-
+                    <input type="text" class="form-control" id="login" th:field="${usuario.login}" required>
                 </div>
             </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Senha</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="login" th:field="${usuario.senha}" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">CPF</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="cpf" th:field="${usuario.cpf}" required>
+                </div>
+            </div>
+
+
+
+
 
             <div class="form-group row">
                 <div class="col-sm-2"></div>
@@ -89,8 +98,8 @@
                     </button>
                 </div>
                 <div class="col-sm-5">
-                    <button type="submit" class="btn btn-sm btn-danger btn-controle">
-                        <i class="fa fa-trash-alt"></i> Deletar
+                    <button type="submit" class="btn btn-sm btn-success btn-controle">
+                        <i class="fa fa-save"></i> Salvar
                     </button>
                 </div>
 

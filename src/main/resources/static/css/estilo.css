@@ -35,6 +35,16 @@ footer{
     border-radius: 10px;
 }
 
+.container-usuarios{
+    margin-top:20px;
+    margin-bottom:20px;
+    width: 90%;
+    min-width: 300px;
+    min-height: 500px;
+    border: 1px solid #343a40;
+    border-radius: 10px;
+}
+
 .container-projetos{
     margin-top:20px;
     margin-bottom:20px;
