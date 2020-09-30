@@ -41,6 +41,12 @@ public class UsuarioController {
         return "usuario/view";
     }
 
+    @GetMapping("/usuario/edit/{id}")
+    public String editUsuario(@PathVariable long id, Model model) {
+        model.addAttribute("usuario", usuarioRepository.findById(id));
+        return "usuario/edit";
+    }
+
     @GetMapping("/usuario/delete/{id}")
     public String deleteUsuario(@PathVariable long id, Model model) {
         model.addAttribute("usuario", usuarioRepository.findById(id));
